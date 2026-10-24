@@ -1,7 +1,7 @@
 [project]
 name = "voice-bot"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI Voice Bot"
 readme = "README.md"
 authors = [
     { name = "c language", email = "dj404729@gmail.com" }
@@ -18,9 +18,6 @@ dependencies = [
     "requests>=2.34.2",
     "uvicorn>=0.54.0",
 ]
-
-[project.scripts]
-voice-bot = "voice_bot:main"
 
 [build-system]
 requires = ["uv_build>=0.12.17,<0.13.0"]
