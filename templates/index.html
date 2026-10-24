@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova — Voice AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v={{ cache_buster | default(1) }}">
+</head>
+
+<body class="dark-theme">
+
+    <div class="ambient-mesh">
+        <div class="mesh-orb mesh-1"></div>
+        <div class="mesh-orb mesh-2"></div>
+        <div class="mesh-orb mesh-3"></div>
+    </div>
+
+    <div class="app-layout">
+
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="brand-avatar">
+                    <span class="avatar-core"></span>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">NOVA</span>
+                    <span class="brand-version">Voice 2.0</span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <div class="latency-chip">
+                    <span class="chip-bolt">⚡</span>
+                    <span>Sub-Second AI</span>
+                </div>
+                <div class="status-chip">
+                    <span class="status-indicator"></span>
+                    <span>ACTIVE</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="noise-toast" id="noiseToast" style="display: none;">
+            <span class="toast-dot"></span>
+            <span class="toast-text">High background noise detected</span>
+        </div>
+
+        <main class="app-stage" id="appStage">
+
+            <div class="left-stage" id="leftStage">
+                <section class="visualizer-container">
+                    <div class="aura-stage ready" id="auraStage">
+                        <div class="aura-ripple ripple-outer"></div>
+                        <div class="aura-ripple ripple-mid"></div>
+                        <div class="aura-ripple ripple-inner"></div>
+
+                        <div class="voice-orb" id="voiceOrb">
+                            <div class="orb-highlight"></div>
+                            <div class="orb-core"></div>
+                            
+                            <div class="equalizer-spectrum" id="equalizer">
+                                <span class="eq-bar bar-1"></span>
+                                <span class="eq-bar bar-2"></span>
+                                <span class="eq-bar bar-3"></span>
+                                <span class="eq-bar bar-4"></span>
+                                <span class="eq-bar bar-5"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="state-badge-wrapper">
+                        <div class="state-pill ready" id="stateText">READY</div>
+                    </div>
+
+                    <div class="text-group">
+                        <h1 class="headline" id="mainHeadline">Talk freely with Nova</h1>
+                        <p class="subheadline" id="hint">Tap below to begin a real-time consultation</p>
+                    </div>
+                </section>
+
+                <section class="dock-wrapper">
+                    <div class="action-dock">
+                        <button class="primary-voice-btn" id="micButton" type="button" aria-label="Toggle voice input">
+                            <span class="btn-ripple"></span>
+                            <span class="btn-icon-wrapper">
+                                <span class="btn-icon" id="micIcon">🎙</span>
+                            </span>
+                            <span class="btn-text-wrapper">
+                                <span class="dock-label" id="buttonText">TAP TO TALK</span>
+                            </span>
+                            <span class="dock-timer-pill" id="recordingTime">00:00</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-stage" id="rightStage">
+                <div class="chat-header-bar">
+                    <div class="chat-header-left">
+                        <span class="chat-header-icon">✦</span>
+                        <span class="chat-header-title">Live Consultation Transcript</span>
+                    </div>
+                    <div class="chat-header-status">
+                        <span class="pulse-dot"></span>
+                        <span>Connected</span>
+                    </div>
+                </div>
+
+                <section class="transcript-viewport" id="conversation">
+                    <div class="empty-feed" id="emptyState">
+                        <div class="spark-icon">✨</div>
+                        <p class="empty-title">Ready when you are</p>
+                        <p class="empty-desc">Your voice transcript and doctor slot recommendations will appear here in real time</p>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+
+        <footer class="app-footer">
+            <span class="footer-tag">Groq LPU STT & LLM</span>
+            <span class="footer-sep">·</span>
+            <span class="footer-tag">ElevenLabs Ultra-Low Latency</span>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.31/dist/bundle.min.js"></script>
+    <script src="/static/script.js?v={{ cache_buster | default(1) }}"></script>
+
+</body>
+
+</html>
