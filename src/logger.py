@@ -2,8 +2,8 @@ import logging
 import os
 from datetime import datetime
 
+LOG_DIR = "/tmp/logs" if os.getenv("VERCEL") else "logs"
 
-LOG_DIR = "logs"
 os.makedirs(LOG_DIR, exist_ok=True)
 
 LOG_FILE = os.path.join(
@@ -11,13 +11,10 @@ LOG_FILE = os.path.join(
     f"{datetime.now().strftime('%Y-%m-%d')}.log"
 )
 
-
 def get_logger(name):
-
     logger = logging.getLogger(name)
 
     if not logger.handlers:
-
         logger.setLevel(logging.INFO)
 
         file_handler = logging.FileHandler(LOG_FILE)
@@ -27,7 +24,6 @@ def get_logger(name):
         )
 
         file_handler.setFormatter(formatter)
-
         logger.addHandler(file_handler)
 
     return logger
