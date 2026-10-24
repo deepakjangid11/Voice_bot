@@ -8,7 +8,12 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "elevenlabs>=2.74.1",
+    "fastapi>=0.162.0",
+    "groq>=1.7.0",
+    "pymysql>=1.2.3",
     "python-dotenv>=1.2.4",
+    "python-multipart>=0.0.32",
 ]
 
 [project.scripts]
